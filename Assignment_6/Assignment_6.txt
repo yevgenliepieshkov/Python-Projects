@@ -1,4 +1,7 @@
-# ---------------- SOURCE ----------------------------------------
+------------------------Assignment_6-------------------------------
+---------------------Yevgen Liepieshkov----------------------------
+
+# ---------------- SOURCE -----------------------------------------
 class TripleString:
     """ encapsulates a 3-string object """
 
@@ -9,7 +12,7 @@ class TripleString:
 
     DEFAULT_STRING = "(undefined)"
 
-    # constructor method ------------------------------------
+    # constructor method ------------------------------------------
     def __init__(self,
                  string1=DEFAULT_STRING, string2=DEFAULT_STRING,
                  string3=DEFAULT_STRING):
@@ -20,7 +23,7 @@ class TripleString:
             if not self.set_string3(string3):
                 self.string3 = TripleString.DEFAULT_STRING
 
-    # mutator ("set") methods -------------------------------
+    # mutator ("set") methods -------------------------------------
     def set_string1(self, string):
         if not self.valid_string(string):
             return False
@@ -93,7 +96,7 @@ print("{}{}{}{}{}{}".format(triple_string_num_1.to_string(), triple_string_num_2
 string = ""
 
 if triple_string_num_3.set_string1(string):
-    print("Successfully set string1  to: " + "\"" + string + "\"")
+    print("Successfully set string1 to: " + "\"" + string + "\"")
 else:
     print("Setting: " + "\"" + string + "\" as a string1 was not successful")
 
@@ -119,5 +122,27 @@ print("\nHere is string1 from object triple_string_num_3: "
       "Here is string3 from object triple_string_num_5: "
       + triple_string_num_5.get_string3() + "\n")
 
+---------------------------OUTPUT------------------------------------------------
 
+String 1: hello, String 2: h, String 3: (undefined)
+String 1: -1, String 2: omg, String 3: let's do it
+String 1: (undefined), String 2: Nooo, String 3: Hi
+String 1: (undefined), String 2: (undefined), String 3: (undefined)
+String 1: Good morning, String 2:  it's me, String 3: the third triple string
+String 1: NO way, String 2: (undefined), String 3: where is the second string
+
+String 1: hello, String 2: h, String 3: bye
+String 1: +2, String 2: omg, String 3: let's do it
+String 1: (undefined), String 2: Yees, String 3: Hi
+String 1: 1, String 2: 2, String 3: 3
+String 1: Good morning, String 2: It's not me, String 3: the third triple string
+String 1: NO way, String 2: here I am, String 3: where is the second string
+
+Setting: "" as a string1 was not successful
+Successfully set string2 to: "Now I am a good string that will pass all filters"
+Setting: "Now I am a bad string that will not pass all filters" as a string2 was not successful
+
+Here is string1 from object triple_string_num_3: (undefined)
+Here is string2 from object triple_string_num_4: Now I am a good string that will pass all filters
+Here is string3 from object triple_string_num_5: the third triple string
 
