@@ -1,0 +1,160 @@
+------------------Assignment_5---------------------
+--------------Yevgen Liepieshkov-------------------
+
+# ----------------Method implementations--------------------
+MAX_LEN = 1500
+MIN_LEN = 4
+
+
+def get_key_character():
+
+    char = None
+
+    while char is None:
+
+        char = input("Please enter a SINGLE character to act as key: ")
+
+        if len(char) != 1:
+            char = None
+            continue
+        else:
+            break
+
+    return char
+
+
+def get_string():
+
+    sentence = None
+
+    while sentence is None:
+
+        sentence = input("Please enter a phrase or sentence >= {0}"
+                         " and <= {1} characters: ".format(MIN_LEN, MAX_LEN))
+
+        if (len(sentence) >= MIN_LEN) and (len(sentence) <= MAX_LEN):
+            continue
+        else:
+            sentence = None
+
+    return sentence
+
+
+def mask_character(a, b):
+
+    new_string = "'"
+
+    for char in range(len(b)):
+
+        if b[char] == a:
+            new_string += "*"
+        else:
+            new_string += b[char]
+
+    new_string += "'"
+
+    return new_string
+
+
+def remove_character(a, b):
+
+    new_string = "'"
+
+    for char in range(len(b)):
+
+        if b[char] != a:
+            new_string += b[char]
+
+    new_string += "'"
+
+    return new_string
+
+
+def count_key(a, b):
+
+    counter = 0
+
+    for char in range(len(b)):
+
+        if b[char] == a:
+            counter += 1
+
+    return counter
+
+
+# ----------------------Main ---------------------------
+
+my_key = get_key_character()
+my_string = get_string()
+
+print("\nString with key character, '{}', masked:\n   ".format(my_key),
+      mask_character(my_key, my_string),
+
+      "\n\nString with '{}' removed:\n   ".format(my_key),
+      remove_character(my_key, my_string),
+
+      "\n\n# of occurrences of key character,"
+      "'{0}': {1}".format(my_key,count_key(my_key,my_string)))
+
+
+------------------------RUN_1----------------------------
+
+Please enter a SINGLE character to act as key: a
+Please enter a phrase or sentence >= 4 and <= 1500 characters: Has had have hello hashbrown
+
+String with key character, 'a', masked:
+    'H*s h*d h*ve hello h*shbrown '
+
+String with 'a' removed:
+    'Hs hd hve hello hshbrown '
+
+# of occurrences of key character,'a': 4
+
+-------------------------RUN_2------------------------------
+
+Please enter a SINGLE character to act as key: asdfds
+Please enter a SINGLE character to act as key: 123
+Please enter a SINGLE character to act as key: --
+Please enter a SINGLE character to act as key: 1
+Please enter a phrase or sentence >= 4 and <= 1500 characters: 123
+Please enter a phrase or sentence >= 4 and <= 1500 characters: 0
+Please enter a phrase or sentence >= 4 and <= 1500 characters: a
+Please enter a phrase or sentence >= 4 and <= 1500 characters: asd
+Please enter a phrase or sentence >= 4 and <= 1500 characters: 123123123123123
+
+String with key character, '1', masked:
+    '*23*23*23*23*23'
+
+String with '1' removed:
+    '2323232323'
+
+# of occurrences of key character,'1': 5
+
+
+-------------------------RUN_3------------------------------
+
+Please enter a SINGLE character to act as key: hola
+Please enter a SINGLE character to act as key: h
+Please enter a phrase or sentence >= 4 and <= 1500 characters: hola
+
+String with key character, 'h', masked:
+    '*ola'
+
+String with 'h' removed:
+    'ola'
+
+# of occurrences of key character,'h': 1
+
+-------------------------RUN_4------------------------------
+
+Please enter a SINGLE character to act as key: +
+Please enter a phrase or sentence >= 4 and <= 1500 characters: +=-!
+
+String with key character, '+', masked:
+    '*=-!'
+
+String with '+' removed:
+    '=-!'
+
+# of occurrences of key character,'+': 1
+

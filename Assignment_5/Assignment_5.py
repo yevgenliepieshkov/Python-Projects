@@ -1,3 +1,8 @@
+# ----------------Method implementations--------------------
+MAX_LEN = 1500
+MIN_LEN = 4
+
+
 def get_key_character():
 
     char = None
@@ -21,13 +26,13 @@ def get_string():
 
     while sentence is None:
 
-        sentence = input("Please enter a phrase or sentence >= 4 and <= 500 characters: ")
+        sentence = input("Please enter a phrase or sentence >= {0}"
+                         " and <= {1} characters: ".format(MIN_LEN, MAX_LEN))
 
-        if (len(sentence) >= 4) and (len(sentence) <= 1500):
+        if (len(sentence) >= MIN_LEN) and (len(sentence) <= MAX_LEN):
             continue
         else:
             sentence = None
-            continue
 
     return sentence
 
@@ -74,6 +79,8 @@ def count_key(a, b):
     return counter
 
 
+# ----------------------Main ---------------------------
+
 my_key = get_key_character()
 my_string = get_string()
 
@@ -83,6 +90,5 @@ print("\nString with key character, '{}', masked:\n   ".format(my_key),
       "\n\nString with '{}' removed:\n   ".format(my_key),
       remove_character(my_key, my_string),
 
-      "\n\n# of occurrences of key character, '{0}': {1}".format(my_key,
-                                                             count_key(my_key,
-                                                                       my_string)))
+      "\n\n# of occurrences of key character,"
+      "'{0}': {1}".format(my_key,count_key(my_key,my_string)))
