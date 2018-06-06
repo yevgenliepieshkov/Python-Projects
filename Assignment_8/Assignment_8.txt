@@ -1,3 +1,6 @@
+----------------------Assignment_8--------------------
+-------------------Yevgen Liepieshkov-----------------
+
 class DateProfile:
 
     MIN_NUM = 1    # I use this numbers through methods so instead of creating 4 range limits
@@ -215,3 +218,72 @@ for profile in profiles:
     while num < 4:
         display_two_profiles(profile, profiles[num])
         num += 1
+
+---------------------------RUN--------------------------------
+
+Data Profile:
+  Yevgen(M) searching for F, w/fin=10 and rom=10
+Data Profile:
+  Nastia(F) searching for M, w/fin=10 and rom=10
+Data Profile:
+  Alex(F) searching for F, w/fin=7 and rom=2
+Data Profile:
+  Lili(F) searching for F, w/fin=5 and rom=3
+
+Fit between Yevgen and Yevgen:  0.000.
+Fit between Yevgen and Nastia:  1.000.
+Fit between Yevgen and Alex:  0.000.
+Fit between Yevgen and Lili:  0.000.
+
+Fit between Nastia and Yevgen:  1.000.
+Fit between Nastia and Nastia:  0.000.
+Fit between Nastia and Alex:  0.000.
+Fit between Nastia and Lili:  0.000.
+
+Fit between Alex and Yevgen:  0.000.
+Fit between Alex and Nastia:  0.000.
+Fit between Alex and Alex:  1.000.
+Fit between Alex and Lili:  0.850.
+
+Fit between Lili and Yevgen:  0.000.
+Fit between Lili and Nastia:  0.000.
+Fit between Lili and Alex:  0.850.
+Fit between Lili and Lili:  1.000.
+
+Test(F) searching for M, w/fin=5 and rom=1
+NO NAME(M) searching for F, w/fin=1 and rom=1
+
+1  name length is to small
+H  is invalid gender
+0  is invalid number should be from 1 to 10
+12  is invalid number should be from 1 to 10
+
+Data Profile:
+  Yevgen(M) searching for F, w/fin=10 and rom=10
+Data Profile:
+  Nastia(F) searching for M, w/fin=10 and rom=10
+Data Profile:
+  Alex(F) searching for F, w/fin=7 and rom=2
+Data Profile:
+  Lili(F) searching for F, w/fin=5 and rom=3
+
+Fit between Yevgen and Yevgen:  0.000.
+Fit between Yevgen and Nastia:  1.000.
+Fit between Yevgen and Alex:  0.000.
+Fit between Yevgen and Lili:  0.000.
+
+Fit between Nastia and Yevgen:  1.000.
+Fit between Nastia and Nastia:  0.000.
+Fit between Nastia and Alex:  0.000.
+Fit between Nastia and Lili:  0.000.
+
+Fit between Alex and Yevgen:  0.000.
+Fit between Alex and Nastia:  0.000.
+Fit between Alex and Alex:  1.000.
+Fit between Alex and Lili:  0.850.
+
+Fit between Lili and Yevgen:  0.000.
+Fit between Lili and Nastia:  0.000.
+Fit between Lili and Alex:  0.850.
+Fit between Lili and Lili:  1.000.
+
