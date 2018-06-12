@@ -1,3 +1,6 @@
+-----------------------Assignment_9--------------------------------
+--------------------Yevgen Liepieshkov-----------------------------
+
 class Student:
     # class ("static") members and intended constants
     DEFAULT_NAME = "zz-error"
@@ -257,3 +260,210 @@ if Student.get_sort_key() == Student.SORT_BY_FIRST:
 
 print("Median of odd class = ", StudentArrayUtilities.get_median_destructive(my_students_15, array_size_15))
 print("Median of small class = ", StudentArrayUtilities.get_median_destructive(my_student_1, array_size_1))
+
+------------------------------------------RUN------------------------------------------------
+
+Before default sort (even):
+ ----------
+    name: Yes, it'sme
+    total points: 0.
+ ----------
+    name: No, name
+    total points: 31.
+ ----------
+    name: Nick, theGreek
+    total points: 87.
+ ----------
+    name: Pepper, Jack
+    total points: 199.
+ ----------
+    name: Hola, Amigo
+    total points: 105.
+ ----------
+    name: Never, Stop
+    total points: 234.
+ ----------
+    name: Yevgen, L
+    total points: 132.
+ ----------
+    name: me, ed
+    total points: 123.
+ ----------
+    name: smith, fred
+    total points: 95.
+ ----------
+    name: bauer, jack
+    total points: 124.
+ ----------
+    name: jacobs, carrie
+    total points: 195.
+ ----------
+    name: renquist, abe
+    total points: 148.
+ ----------
+    name: zz-error, trevor
+    total points: 108.
+ ----------
+    name: perry, fred
+    total points: 225.
+ ----------
+    name: lewis, frank
+    total points: 44.
+ ----------
+    name: stollings, pamela
+    total points: 452.
+
+After default sort (even):
+ ----------
+    name: bauer, jack
+    total points: 124.
+ ----------
+    name: Hola, Amigo
+    total points: 105.
+ ----------
+    name: jacobs, carrie
+    total points: 195.
+ ----------
+    name: lewis, frank
+    total points: 44.
+ ----------
+    name: me, ed
+    total points: 123.
+ ----------
+    name: Never, Stop
+    total points: 234.
+ ----------
+    name: Nick, theGreek
+    total points: 87.
+ ----------
+    name: No, name
+    total points: 31.
+ ----------
+    name: Pepper, Jack
+    total points: 199.
+ ----------
+    name: perry, fred
+    total points: 225.
+ ----------
+    name: renquist, abe
+    total points: 148.
+ ----------
+    name: smith, fred
+    total points: 95.
+ ----------
+    name: stollings, pamela
+    total points: 452.
+ ----------
+    name: Yes, it'sme
+    total points: 0.
+ ----------
+    name: Yevgen, L
+    total points: 132.
+ ----------
+    name: zz-error, trevor
+    total points: 108.
+
+After sort BY FIRST:
+ ----------
+    name: renquist, abe
+    total points: 148.
+ ----------
+    name: Hola, Amigo
+    total points: 105.
+ ----------
+    name: jacobs, carrie
+    total points: 195.
+ ----------
+    name: me, ed
+    total points: 123.
+ ----------
+    name: lewis, frank
+    total points: 44.
+ ----------
+    name: perry, fred
+    total points: 225.
+ ----------
+    name: smith, fred
+    total points: 95.
+ ----------
+    name: Yes, it'sme
+    total points: 0.
+ ----------
+    name: bauer, jack
+    total points: 124.
+ ----------
+    name: Pepper, Jack
+    total points: 199.
+ ----------
+    name: Yevgen, L
+    total points: 132.
+ ----------
+    name: No, name
+    total points: 31.
+ ----------
+    name: stollings, pamela
+    total points: 452.
+ ----------
+    name: Never, Stop
+    total points: 234.
+ ----------
+    name: Nick, theGreek
+    total points: 87.
+ ----------
+    name: zz-error, trevor
+    total points: 108.
+
+After sort BY POINTS:
+ ----------
+    name: Yes, it'sme
+    total points: 0.
+ ----------
+    name: No, name
+    total points: 31.
+ ----------
+    name: lewis, frank
+    total points: 44.
+ ----------
+    name: Nick, theGreek
+    total points: 87.
+ ----------
+    name: smith, fred
+    total points: 95.
+ ----------
+    name: Hola, Amigo
+    total points: 105.
+ ----------
+    name: zz-error, trevor
+    total points: 108.
+ ----------
+    name: me, ed
+    total points: 123.
+ ----------
+    name: bauer, jack
+    total points: 124.
+ ----------
+    name: Yevgen, L
+    total points: 132.
+ ----------
+    name: renquist, abe
+    total points: 148.
+ ----------
+    name: jacobs, carrie
+    total points: 195.
+ ----------
+    name: Pepper, Jack
+    total points: 199.
+ ----------
+    name: perry, fred
+    total points: 225.
+ ----------
+    name: Never, Stop
+    total points: 234.
+ ----------
+    name: stollings, pamela
+    total points: 452.
+
+Median of even class =  123.5
+Successfully preserved sort key.
+Median of odd class =  123
+Median of small class =  95
