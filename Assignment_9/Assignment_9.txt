@@ -77,9 +77,11 @@ class Student:
     @classmethod
     def compare_two_students(cls, first_stud, second_stud):
         if cls.get_sort_key() == cls.SORT_BY_FIRST:
-            return cls.compare_strings_ignore_case(first_stud.get_first_name(), second_stud.get_first_name())
+            return cls.compare_strings_ignore_case(
+                first_stud.get_first_name(), second_stud.get_first_name())
         if cls.get_sort_key() == cls.SORT_BY_LAST:
-            return cls.compare_strings_ignore_case(first_stud.get_last_name(), second_stud.get_last_name())
+            return cls.compare_strings_ignore_case(
+                first_stud.get_last_name(), second_stud.get_last_name())
         if cls.get_sort_key() == cls. SORT_BY_POINTS:
             return first_stud.get_total_points() - second_stud.get_total_points()
 
@@ -184,7 +186,8 @@ class StudentArrayUtilities:
         if array_size % 2 == 0 :
             Student.set_sort_key(temp)
             half = int(array_size/2)
-            result = (array[half-1].get_total_points() + array[half].get_total_points())/2
+            result = (array[half-1].get_total_points()
+                      + array[half].get_total_points())/2
             return result
         if array_size % 2 > 0:
             i = int((array_size / 2) - 0.5)
@@ -253,13 +256,17 @@ StudentArrayUtilities.array_sort(my_students_16, array_size_16)
 print(StudentArrayUtilities.to_string(my_students_16, "After sort BY POINTS: "))
 
 Student.set_sort_key(Student.SORT_BY_FIRST)
-print("Median of even class = ", StudentArrayUtilities.get_median_destructive(my_students_16, array_size_16))
+print("Median of even class = ",
+      StudentArrayUtilities.get_median_destructive(my_students_16, array_size_16))
 
 if Student.get_sort_key() == Student.SORT_BY_FIRST:
     print("Successfully preserved sort key.")
 
-print("Median of odd class = ", StudentArrayUtilities.get_median_destructive(my_students_15, array_size_15))
-print("Median of small class = ", StudentArrayUtilities.get_median_destructive(my_student_1, array_size_1))
+print("Median of odd class = ",
+      StudentArrayUtilities.get_median_destructive(my_students_15, array_size_15))
+print("Median of small class = ",
+      StudentArrayUtilities.get_median_destructive(my_student_1, array_size_1))
+
 
 ------------------------------------------RUN------------------------------------------------
 

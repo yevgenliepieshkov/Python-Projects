@@ -125,141 +125,164 @@ class Student:
     def get_sort_key(cls):
         return cls.sort_key
 
-# beginning of class StudentArrayUtilities definition ---------------
-class StudentArrayUtilities:
-    @classmethod
-    def to_string(cls, stud_array,
-                    optional_title="--- The Students -----------:\n"):
-        return cls.to_string(stud_array, optional_title)
 
-    @classmethod
-    def array_sort(cls, data, array_size):
-        for k in range(array_size):
-            if not cls.float_largest_to_top(data, array_size - k):
+class StudentArrayUtilities:
+
+    MAX_STUDENTS = 20
+    DEFAULT_SIZE = 0
+    NOT_FOUND = -1
+
+    def __init__(self):
+        self.the_array = []
+        self.num_students = StudentArrayUtilities.DEFAULT_SIZE
+
+    def add_student(self, stud):
+
+        if self.num_students < self.MAX_STUDENTS:
+            self.the_array.append(stud)
+            self.num_students += 1
+            return True
+        else:
+            return False
+
+    def remove_student(self):
+
+        if self.num_students > self.DEFAULT_SIZE:
+            self.num_students -= 1
+            return self.the_array.pop()
+        else:
+            return None
+
+    def array_sort(self):
+
+        for k in range(self.num_students):
+
+            if not self.float_largest_to_top(self.num_students-k):
                 return
 
-    @staticmethod
-    def float_largest_to_top(data, array_size):
+    def float_largest_to_top(self, top):
 
         changed = False
 
-        # notice we stop at array_size - 2 because of expr. k + 1 in loop
-        for k in range(array_size - 1):
+        for k in range(top-1):
 
-            if Student.compare_two_students(data[k],data[k+1]) > 0:
-                data[k], data[k + 1] = data[k + 1], data[k]
+            if Student.compare_two_students(self.the_array[k],
+                                            self.the_array[k+1]) > self.DEFAULT_SIZE:
+                self.the_array[k], self.the_array[k + 1] \
+                    = self.the_array[k + 1], self.the_array[k]
                 changed = True
 
         return changed
 
-    NOT_FOUND = -1  # static constant best defined at top of class
+    def __str__(self):
+        return self.to_string()
 
-    @classmethod
-    def array_search(cls, data, array_size, key_first, key_last):
-        for k in range(array_size):
-            if (data[k].get_last_name() == key_last
-                    and data[k].get_first_name() == key_first):
-                return k  # found match, return index
-        return cls.NOT_FOUND
+    def to_string(self, optional_title="--- The Students ---:\n"):
 
-    # class stringizers ----------------------------------
-
-    @staticmethod
-    def to_string(stud_array,
-                  optional_title="--- The Students -----------:\n"):
         ret_val = optional_title + "\n"
-        for student in stud_array:
+
+        for student in self.the_array:
             ret_val = ret_val + str(student) + "\n"
+
         return ret_val
 
-    @classmethod
-    def get_median_destructive(cls, array, array_size):
+    def get_median_destructive(self):
         temp = Student.get_sort_key()
         Student.set_sort_key(Student.SORT_BY_POINTS)
-        cls.array_sort(array, array_size)
-        if array_size <= 0:
+        self.array_sort()
+
+        if self.num_students <= self.DEFAULT_SIZE:
             Student.set_sort_key(temp)
             return 0
-        if array_size % 2 == 0 :
+
+        if self.num_students % 2 == self.DEFAULT_SIZE:
             Student.set_sort_key(temp)
-            half = int(array_size/2)
-            result = (array[half-1].get_total_points()
-                      + array[half].get_total_points())/2
+            half = int(self.num_students/2)
+            result = (self.the_array[half-1].get_total_points()
+                      + self.the_array[half].get_total_points())/2
             return result
-        if array_size % 2 > 0:
-            i = int((array_size / 2) - 0.5)
+
+        if self.num_students % 2 > self.DEFAULT_SIZE:
+            i = int((self.num_students / 2) - 0.5)
             Student.set_sort_key(temp)
-            return array[i].get_total_points()
+            return self.the_array[i].get_total_points()
+
 # client --------------------------------------------
+
 # instantiate some students, one with an illegal name ...
 
 
-my_student_1 = [Student("smith", "fred", 95)]
+my_class = \
+   [
+    Student("smith","fred", 95),
+    Student("bauer","jack",123),
+    Student("jacobs","carrie", 195),  Student("renquist","abe",148),
+    Student("3ackson","trevor", 108),  Student("perry","fred",225),
+    Student("loceff","fred", 44),  Student("stollings","pamela",452),
+    Student("charters","rodney", 295),  Student("cassar","john",321)
+   ]
 
-my_students_15 = \
-    [
-        Student("No", "name", 32),
-        Student("Nick", "theGreek", 87),
-        Student("Pepper", "Jack", 199),
-        Student("Hola", "Amigo", 105),
-        Student("Never", "Stop", 234),
-        Student("Yevgen", "L", 132),
-        Student("me", "ed", 123),
-        Student("smith", "fred", 95),
-        Student("bauer", "jack", 123),
-        Student("jacobs", "carrie", 195),
-        Student("renquist", "abe", 148),
-        Student("3ackson", "trevor", 108),
-        Student("perry", "fred", 225),
-        Student("lewis", "frank", 44),
-        Student("stollings", "pamela", 452)
-    ]
+array_size = len(my_class)
 
-my_students_16 = \
-    [
-        Student("Yes", "it'sme", 2),
-        Student("No", "name", 31),
-        Student("Nick", "theGreek", 87),
-        Student("Pepper", "Jack", 199),
-        Student("Hola", "Amigo", 105),
-        Student("Never", "Stop", 234),
-        Student("Yevgen", "L", 132),
-        Student("me", "ed", 123),
-        Student("smith", "fred", 95),
-        Student("bauer", "jack", 124),
-        Student("jacobs", "carrie", 195),
-        Student("renquist", "abe", 148),
-        Student("3ackson", "trevor", 108),
-        Student("perry", "fred", 225),
-        Student("lewis", "frank", 44),
-        Student("stollings", "pamela", 452)
-    ]
+# instantiate an SAU object
+my_studs = StudentArrayUtilities()
 
-array_size_1 = len(my_student_1)
-array_size_15 = len(my_students_15)
-array_size_16 = len(my_students_16)
+# we can add students manually and individually
+my_studs.add_student( Student( "bartman", "petra", 102 ) )
+my_studs.add_student( Student( "charters", "rodney", 295 ) )
 
-print(StudentArrayUtilities.to_string(my_students_16, "Before default sort (even): "))
+# if we happen to have an array available, we can add students in loop
+for k in range(array_size):
+   my_studs.add_student(my_class[k])
 
-StudentArrayUtilities.array_sort(my_students_16, array_size_16)
-print(StudentArrayUtilities.to_string(my_students_16, "After default sort (even): "))
+print( "Before sorting using str:" + str(my_studs) )
+print( "Before sorting using to_string():" + my_studs.to_string() )
+my_studs.array_sort()
+print( "After default sort (LAST):" + str(my_studs) )
 
 Student.set_sort_key(Student.SORT_BY_FIRST)
-StudentArrayUtilities.array_sort(my_students_16, array_size_16)
-print(StudentArrayUtilities.to_string(my_students_16, "After sort BY FIRST: "))
+my_studs.array_sort()
+print( "After dsort by FIRST:" + str(my_studs) )
 
-Student.set_sort_key(Student.SORT_BY_POINTS)
-StudentArrayUtilities.array_sort(my_students_16, array_size_16)
-print(StudentArrayUtilities.to_string(my_students_16, "After sort BY POINTS: "))
-
-Student.set_sort_key(Student.SORT_BY_FIRST)
-print("Median of even class = ",
-      StudentArrayUtilities.get_median_destructive(my_students_16, array_size_16))
-
+# test median
+med = my_studs.get_median_destructive()
+print( "Median of even class =", med)
 if Student.get_sort_key() == Student.SORT_BY_FIRST:
-    print("Successfully preserved sort key.")
+   print( "Successfully preserved sort key." )
+else:
+   print( " ** problem **" )
 
-print("Median of odd class = ",
-      StudentArrayUtilities.get_median_destructive(my_students_15, array_size_15))
-print("Median of small class = ",
-      StudentArrayUtilities.get_median_destructive(my_student_1, array_size_1))
+# various tests of removing and adding too many students
+for k in range(100):
+   student = my_studs.remove_student()
+   if student != None:
+      print( "Removed " + str(student) )
+   else:
+      print( "Empty after", k, "removes." )
+      break
+
+for k in range(100):
+   if not my_studs.add_student(Student("first", "last", 22)):
+      print( "Full after", k, "adds."  )
+      break
+   else:
+      print( "Added(first, last, 22)" )
+
+p = ""
+for k in my_studs.the_array:
+    k.set_last_name("last")
+    p = p + " " + k.get_last_name() + " " + str(k.get_total_points()) + "\n"
+
+print(p)
+print(my_studs.num_students)
+
+for k in range(my_studs.num_students):
+    if len(my_class) > 0:
+        my_studs.remove_student()
+        my_studs.add_student(my_class.pop())
+        print(my_studs.the_array[my_studs.num_students-1])
+
+if not my_studs.remove_student():
+    print("no more studs in array")
+
+print(my_studs.num_students)
